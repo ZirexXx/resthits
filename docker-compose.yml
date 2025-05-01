@@ -1,0 +1,43 @@
+services:
+  db:
+    build:
+      context: ./postgres
+      dockerfile: Dockerfile
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: resthits
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    networks:
+      - net
+
+  resthits-api:
+    build:
+      context: ./resthits
+      dockerfile: Dockerfile
+    volumes:
+      - ./resthits:/app
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    environment:
+      - DB_HOST=db
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=resthits
+      - DJANGO_SETTINGS_MODULE=backend.settings
+      - PYTHONUNBUFFERED=1
+    entrypoint: /app/entrypoint.sh
+    command: ["python", "manage.py", "runserver", "0.0.0.0:8000"]
+    networks:
+      - net
+
+volumes:
+  db_data:
+
+networks:
+  net:
