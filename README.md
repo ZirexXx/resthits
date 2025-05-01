@@ -26,9 +26,7 @@ The API supports CRUD operations for both **artists** and **hits**, as well as e
 The project uses Django and Django REST Framework, with PostgreSQL as the database backend. Historical data tracking is implemented using `django-simple-history`.
 
 ### Tech Stack
-
-<img src="pythoned-1.png" width="70">
----
+<img src="pythoned-1.png" width="70" title="Python 3.10.9"><img src="Postgresql_elephant.svg.png" width="70" title="PostgreSQL 16"><img src="django-icon.svg" width="70" title="Django 5.2">
 
 ### Endpoint overview
 
