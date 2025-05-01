@@ -55,7 +55,7 @@ The project uses Django and Django REST Framework, with PostgreSQL as the databa
 
 #### Populate Data (For Testing Only)
 1. **`/api/v1/populate/`**
-   - **GET**: Populate the database with sample artists and hits.
+   - **GET**: Populate the database with 3 sample artists and 20 sample hits.
 
 
 ## Running the RestHits Project
